@@ -1,0 +1,39 @@
+{
+    "name": "@rivalis/utils",
+    "version": "1.8.5",
+    "description": "Shared library used in rivalis sub-projects",
+    "types": "lib/utils.d.ts",
+    "main": "lib/utils.js",
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "homepage": "https://rivalis.io/",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nodemon -e js -w src --exec 'npm run build'",
+        "build": "npm run build:src && npm run build:tsd",
+        "test": "echo 'run test scripts'",
+        "build:tsd": "tsc -d --allowJs --types eventemitter3 --emitDeclarationOnly --target es5 --lib ES2015 --outDir ./lib src/*.js",
+        "build:src": "babel --config-file ./.babelrc src --out-dir lib"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rivalis/rivalis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rivalis/rivalis/issues"
+    },
+    "dependencies": {
+        "eventemitter3": "^4.0.7"
+    }
+}

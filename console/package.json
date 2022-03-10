@@ -1,0 +1,85 @@
+{
+  "name": "@rivalis/console",
+  "version": "1.3.8",
+  "description": "Rivalis console app for managing fleets",
+  "author": {
+    "name": "Daniel Kalevski"
+  },
+  "homepage": "https://rivalis.io",
+  "license": "MIT",
+  "bin": {
+    "rivalis-console": "bin/console.js"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run prepare:*\" \"npm run dev:*\"",
+    "build": "concurrently \"npm run prepare:*\" \"npm run build:*\"",
+    "dev:api": "nodemon -e js -w api --exec \"npm run build:api\"",
+    "dev:client": "react-scripts start",
+    "dev:style": "nodemon -e less -w style --exec \"npm run build:style\"",
+    "build:api": "babel --config-file ./.babelrc api --out-dir build",
+    "build:client": "BUILD_PATH=client PUBLIC_URL=/public react-scripts build",
+    "build:style": "lessc --js ./style/style.less public/style.css"
+  },
+  "directories": {
+    "bin": "bin"
+  },
+  "files": [
+    "client",
+    "build",
+    "bin"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rivalis/rivalis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rivalis/rivalis/issues"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
+    "@uiw/react-textarea-code-editor": "^1.5.1",
+    "antd": "^4.18.9",
+    "chart.js": "^3.7.1",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^4.0.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "^5.0.0"
+  },
+  "dependencies": {
+    "@rivalis/browser": "^1.1.5",
+    "@rivalis/utils": "^1.8.5",
+    "axios": "^0.26.0",
+    "fast-jwt": "^1.5.1",
+    "fastify": "^3.27.2",
+    "fastify-cors": "^6.0.3",
+    "fastify-static": "^4.5.0",
+    "mariadb": "^2.5.6",
+    "sequelize": "^6.17.0",
+    "sqlite3": "npm:@vscode/sqlite3@^5.0.7"
+  }
+}

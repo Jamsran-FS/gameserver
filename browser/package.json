@@ -1,0 +1,41 @@
+{
+    "name": "@rivalis/browser",
+    "version": "1.2.9",
+    "description": "Browser client for rivalis server",
+    "types": "lib/browser.d.ts",
+    "main": "lib/browser.js",
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "homepage": "https://rivalis.io/",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nodemon -e js -w src --exec 'npm run build'",
+        "build": "npm run build:src && npm run build:tsd",
+        "test": "echo 'run test scripts'",
+        "build:tsd": "tsc -d --allowJs --types @rivalis/utils,@rivalis/data,axios --emitDeclarationOnly --target es5 --lib ES2015,DOM --outDir ./lib src/*.js",
+        "build:src": "babel --config-file ./.babelrc src --out-dir lib"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rivalis/rivalis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rivalis/rivalis/issues"
+    },
+    "dependencies": {
+        "@rivalis/data": "^1.0.6",
+        "@rivalis/utils": "^1.8.5",
+        "axios": "^0.26.0"
+    }
+}

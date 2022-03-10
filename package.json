@@ -1,0 +1,71 @@
+{
+    "name": "@rivalis/root",
+    "private": true,
+    "license": "MIT",
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "scripts": {
+        "build": "npm run build --workspaces --if-present",
+        "build:base": "concurrently -m 1 \"npm run build:base\"",
+        "examples": "npm run dev -w @rivalis/examples",
+        "dev": "concurrently \"npm run dev:*\"",
+        
+        "dev:utils": "npm run dev -w @rivalis/utils",
+        "dev:data": "npm run dev -w @rivalis/data",
+        "dev:core": "npm run dev -w @rivalis/core",
+        "dev:browser": "npm run dev -w @rivalis/browser",
+        "dev:nodejs": "npm run dev -w @rivalis/nodejs",
+        "dev:transports": "npm run dev -w @rivalis/transports",
+        "dev:registry": "npm run dev -w @rivalis/registry",
+        "dev:boot": "npm run dev -w @rivalis/boot",
+        "dev:console": "npm run dev:api -w @rivalis/console",
+        
+        "build:@rivalis/utils": "npm run build -w @rivalis/utils",
+        "build:@rivalis/data": "npm run build -w @rivalis/data",
+        "build:@rivalis/core": "npm run build:@rivalis/utils && npm run build:@rivalis/data && npm run build -w @rivalis/core",
+        "build:@rivalis/transports": "npm run build:@rivalis/core && npm run build -w @rivalis/transports",
+        "build:@rivalis/nodejs": "npm run build:@rivalis/core && npm run build -w @rivalis/nodejs",
+        "build:@rivalis/browser": "npm run build:@rivalis/core && npm run build -w @rivalis/browser",
+        "build:@rivalis/registry": "npm run build:@rivalis/transports && npm run build:@rivalis/nodejs && npm run build -w @rivalis/registry",
+        "build:@rivalis/cli": "npm run build:@rivalis/utils && npm run build -w @rivalis/cli",
+        "build:@rivalis/boot": "npm run build -w @rivalis/boot",
+        "build:@rivalis/console": "npm run build:@rivalis/browser && npm run build -w @rivalis/console",
+        "build:@rivalis/examples": "npm run build:@rivalis/browser && npm run build -w @rivalis/examples"
+    },
+    "workspaces": [
+        "./utils",
+        "./data",
+        "./cli",
+        "./core",
+        "./transports",
+        "./browser",
+        "./nodejs",
+        "./registry",
+        "./boot",
+        "./console",
+        "./examples"
+    ],
+    "devDependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.5",
+        "@babel/eslint-parser": "^7.17.0",
+        "@babel/node": "^7.16.8",
+        "@babel/plugin-proposal-class-properties": "^7.16.5",
+        "@babel/preset-env": "^7.16.11",
+        "@parcel/transformer-sass": "^2.3.2",
+        "axios": "^0.26.0",
+        "chai": "^4.3.6",
+        "concurrently": "^7.0.0",
+        "dotenv-cli": "^5.0.0",
+        "eslint": "^8.10.0",
+        "less": "^4.1.2",
+        "nodemon": "^2.0.15",
+        "parcel": "^2.3.2",
+        "process": "^0.11.10",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^6.2.2",
+        "typescript": "^4.6.2"
+    }
+}

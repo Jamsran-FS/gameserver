@@ -1,0 +1,43 @@
+{
+    "name": "@rivalis/transports",
+    "version": "1.1.7",
+    "description": "Transport implementations for @rivalis/core",
+    "types": "lib/transports.d.ts",
+    "main": "lib/transports.js",
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "homepage": "https://rivalis.io/",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nodemon -e js -w src --exec 'npm run build'",
+        "build": "npm run build:src && npm run build:tsd",
+        "test": "echo 'run test scripts'",
+        "build:tsd": "tsc -d --allowJs --types @rivalis/core,@types/ws --emitDeclarationOnly --target es5 --lib ES2015 --outDir ./lib src/*.js",
+        "build:src": "babel --config-file ./.babelrc src --out-dir lib"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rivalis/rivalis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rivalis/rivalis/issues"
+    },
+    "dependencies": {
+        "@types/ws": "^8.5.2",
+        "ws": "^8.5.0"
+    },
+    "peerDependencies": {
+        "@rivalis/core": "4.x"
+    }
+}

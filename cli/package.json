@@ -1,0 +1,65 @@
+{
+    "name": "@rivalis/cli",
+    "version": "1.5.11",
+    "description": "Rivalis command-line interface",
+    "sideEffects": false,
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "homepage": "https://rivalis.io/",
+    "license": "MIT",
+    "bin": {
+        "rivalis": "bin/cli.js"
+    },
+    "scripts": {
+        "dev": "nodemon -e js -w src --exec \"npm run build\"",
+        "build": "PARCEL_WORKERS=0 parcel build --log-level info --target cli",
+        "test": "rivalis project start"
+    },
+    "targets": {
+        "cli": {
+            "source": "src/cli.js",
+            "distDir": "./bin",
+            "optimize": true,
+            "scopeHoist": false,
+            "engines": {
+                "node": ">= 16"
+            },
+            "includeNodeModules": {
+                "@rivalis/registry": false
+            },
+            "sourceMap": false
+        }
+    },
+    "directories": {
+        "lib": "lib",
+        "bin": "bin"
+    },
+    "files": [
+        "lib",
+        "templates"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rivalis/rivalis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rivalis/rivalis/issues"
+    },
+    "peerDependencies": {
+        "@rivalis/console": "1.x",
+        "@rivalis/registry": "2.x"
+    },
+    "devDependencies": {
+        "@rivalis/utils": "^1.8.5",
+        "commander": "^9.0.0",
+        "concurrently": "^7.0.0",
+        "fs-extra": "^10.0.1",
+        "ora": "5.4.1",
+        "semver": "7.3.5"
+    }
+}

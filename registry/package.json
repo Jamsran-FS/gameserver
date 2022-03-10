@@ -1,0 +1,52 @@
+{
+    "name": "@rivalis/registry",
+    "version": "2.5.31",
+    "description": "Rivalis node registry, provides HTTP API for interaction with rivalis nodes inside cluster",
+    "types": "lib/registry.d.ts",
+    "main": "lib/registry.js",
+    "author": {
+        "name": "Daniel Kalevski"
+    },
+    "homepage": "https://rivalis.io/",
+    "license": "MIT",
+    "bin": {
+        "rivalis-registry": "bin/registry.js"
+    },
+    "scripts": {
+        "dev": "nodemon -e js -w src --exec 'npm run build'",
+        "build": "npm run build:src && npm run build:tsd",
+        "test": "npm run test:linter && npm run test:unit",
+        "build:tsd": "tsc -d --allowJs --types @rivalis/transports,@types/node,fastify --emitDeclarationOnly --target es5 --lib ES2015 --outDir ./lib src/*.js",
+        "build:src": "babel --config-file ./.babelrc src --out-dir lib",
+        "test:linter": "eslint src",
+        "test:unit": "echo 'unit tests'"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "jest": {
+        "verbose": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rivalis/rivalis.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rivalis/rivalis/issues"
+    },
+    "dependencies": {
+        "@rivalis/core": "^4.11.18",
+        "@rivalis/nodejs": "^1.1.7",
+        "@rivalis/transports": "^1.1.7",
+        "@types/node": "^17.0.21",
+        "fastify": "^3.27.2",
+        "md5": "^2.3.0"
+    }
+}

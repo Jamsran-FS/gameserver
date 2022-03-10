@@ -1,0 +1,9 @@
+{
+    "name": "temp",
+    "version": "1.0.0",
+    "private": true,
+    "description": "rivalis cli generated application",
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {}
+}
